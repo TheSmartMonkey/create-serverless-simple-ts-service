@@ -1,13 +1,11 @@
+import { dynamoDBClient } from '@libs/db';
 import { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 import { formatJSONResponse } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';
-import { DynamoDB } from 'aws-sdk';
 
 import reportSchema from '../../schema/reports';
 import createHttpError from 'http-errors';
 
-
-const dynamoDb = new DynamoDB.DocumentClient()
 
 const update: ValidatedEventAPIGatewayProxyEvent<typeof reportSchema> = async (event) => {
 
@@ -30,10 +28,8 @@ const update: ValidatedEventAPIGatewayProxyEvent<typeof reportSchema> = async (e
     ReturnValues: 'ALL_NEW',
   };
 
-  // update the todo in the database
   try {
-
-    const data = await dynamoDb.update(params).promise();
+    const data = await dynamoDBClient().update(params).promise();
     return formatJSONResponse({
       message: "report updated",
       data: data.Attributes,

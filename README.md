@@ -19,11 +19,17 @@ Changes to be done
 In order to test the lambda functions locally, after you have deployed the stack a first times
 for dependencies like dynamodb, run the following command:
 
-`OFFLINE=true npx sls invoke local -f create --path src/functions/create/mock.json`
-`npx sls invoke local -f del --path src/functions/del/mock.json`
-`npx sls invoke local -f get --path src/functions/get/mock.json`
-`npx sls invoke local -f list --path src/functions/list/mock.json`
-`npx sls invoke local -f update --path src/functions/update/mock.json`
-`npx sls invoke local -f version --path src/functions/version/mock.json`
+- `npx sls invoke local -f create --path src/functions/create/mock.json`
+- `npx sls invoke local -f del --path src/functions/del/mock.json`
+- `npx sls invoke local -f get --path src/functions/get/mock.json`
+- `npx sls invoke local -f list --path src/functions/list/mock.json`
+- `npx sls invoke local -f update --path src/functions/update/mock.json`
+- `npx sls invoke local -f version --path src/functions/version/mock.json`
 
 Check the [sls invoke local command documentation](https://www.serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/) for more information.
+
+## To simulate remote locally
+
+In serverless.ts put environment/OFFLINE to 'true'
+
+then run `npm run offline`

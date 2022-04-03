@@ -7,15 +7,19 @@
   "scripts": {
     "deploy": "sls deploy --verbose",
     "undeploy": "sls remove --verbose",
-    "offline": "OFFLINE=true sls offline start"
+    "offline": "sls offline start"
   },
   "engines": {
     "node": "^14.0.0"
   },
   "dependencies": {
     "@middy/core": "^2.5.3",
+    "@middy/error-logger": "^2.5.7",
     "@middy/http-json-body-parser": "^2.5.3",
-    "http-errors": "^1.8.1"
+    "@middy/input-output-logger": "^2.5.7",
+    "http-errors": "^1.8.1",
+    "middy-middleware-json-error-handler": "^3.0.0",
+    "pino": "^7.9.2"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.0.0",

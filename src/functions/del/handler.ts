@@ -1,9 +1,7 @@
+import { dynamoDBClient } from '@libs/db';
 import { formatJSONResponse, ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';
-import { DynamoDB } from 'aws-sdk';
 
-
-const dynamoDb = new DynamoDB.DocumentClient()
 
 const del: ValidatedEventAPIGatewayProxyEvent<void> = async (event) => {
 
@@ -14,7 +12,7 @@ const del: ValidatedEventAPIGatewayProxyEvent<void> = async (event) => {
     },
   };
 
-  await dynamoDb.delete(params).promise();
+  await dynamoDBClient().delete(params).promise();
 
   return formatJSONResponse({
     message: "report deleted",

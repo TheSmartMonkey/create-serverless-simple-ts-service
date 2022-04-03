@@ -1,12 +1,11 @@
 import { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 import { formatJSONResponse } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';
-import { DynamoDB } from 'aws-sdk';
 import * as uuid from 'uuid'
 
 import reportSchema from '../../schema/reports';
+import { dynamoDBClient } from '@libs/db';
 
-const dynamoDb = new DynamoDB.DocumentClient()
 
 const create: ValidatedEventAPIGatewayProxyEvent<typeof reportSchema> = async (event) => {
 
@@ -22,7 +21,7 @@ const create: ValidatedEventAPIGatewayProxyEvent<typeof reportSchema> = async (e
     }
   }
 
-  await dynamoDb.put(params).promise();
+  await dynamoDBClient().put(params).promise();
 
   return formatJSONResponse({
     message: "report created",

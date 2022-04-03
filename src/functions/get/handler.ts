@@ -1,9 +1,7 @@
+import { dynamoDBClient } from '@libs/db';
 import { formatJSONResponse, ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway';
 import { middyfy } from '@libs/lambda';
-import { DynamoDB } from 'aws-sdk';
 
-
-const dynamoDb = new DynamoDB.DocumentClient()
 
 const get: ValidatedEventAPIGatewayProxyEvent<void> = async (event) => {
 
@@ -14,7 +12,7 @@ const get: ValidatedEventAPIGatewayProxyEvent<void> = async (event) => {
     },
   };
 
-  const data = await dynamoDb.get(params).promise();
+  const data = await dynamoDBClient().get(params).promise();
 
   return formatJSONResponse(data.Item);
 }

@@ -5,7 +5,6 @@ import update from '@functions/update';
 import get from '@functions/get';
 import list from '@functions/list';
 import create from '@functions/create';
-import version from '@functions/version';
 
 import dynamodbTables from 'resources/dynamodb-tables';
 
@@ -33,6 +32,12 @@ const serverlessConfiguration: AWS = {
             concurrency: 10,
             loader: { '.html': 'text' },
         },
+        dynamodb: {
+            stages: '${self:custom.stageType}',
+            start: {
+                migrate: true,
+            },
+        },
     },
     plugins: [
         'serverless-esbuild',
@@ -55,6 +60,7 @@ const serverlessConfiguration: AWS = {
         },
         environment: {
             REPORTS_TABLE: '${self:custom.reportsTable}',
+            OFFLINE: 'false',
         },
         iam: {
             role: {
@@ -79,7 +85,6 @@ const serverlessConfiguration: AWS = {
         },
     },
     functions: {
-        version,
         create,
         list,
         get,

@@ -4,8 +4,8 @@
             "type": "dynamodb",
             "title": "dev-serverless-ts-service-reports-table",
             "tableName": "dev-serverless-ts-service-reports-table",
-            "awsProfile": "perso",
-            "region": "eu-west-3"
+            "region": "local",
+            "endpoint": "http://localhost:8000"
         }
     ]
 }
