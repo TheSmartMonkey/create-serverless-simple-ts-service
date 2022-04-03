@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://onwwsf5wg1.execute-api.eu-west-3.amazonaws.com/laurentvdev",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

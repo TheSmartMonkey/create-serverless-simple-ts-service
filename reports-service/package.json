@@ -1,0 +1,59 @@
+{
+  "name": "reports-service",
+  "version": "1.0.0",
+  "description": "Serverless aws-nodejs-typescript template",
+  "main": "serverless.ts",
+  "scripts": {
+    "deploy": "sls deploy --aws-profile msl-dev --verbose",
+    "undeploy": "sls remove --aws-profile msl-dev --verbose",
+    "openapi": "cd openapi && npx ts-node generateOpenapi.ts"
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {
+    "@middy/core": "^1.5.2",
+    "@middy/error-logger": "^2.5.1",
+    "@middy/http-json-body-parser": "^1.5.2",
+    "@middy/input-output-logger": "^2.5.1",
+    "aws-sdk": "^2.987.0",
+    "bignumber.js": "^9.0.1",
+    "http-errors": "^1.8.0",
+    "middy-middleware-json-error-handler": "^2.0.6",
+    "pino": "^6.13.2",
+    "source-map-support": "^0.5.20",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^2.55.0",
+    "@types/aws-lambda": "^8.10.83",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^15.14.9",
+    "@types/pino": "^6.3.11",
+    "@types/uuid": "^8.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "aws-sdk-mock": "^5.3.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "jest": "^26.6.3",
+    "json-schema-to-ts": "^1.6.4",
+    "serverless": "^2.57.0",
+    "serverless-webpack": "^5.5.4",
+    "ts-jest": "^26.5.6",
+    "ts-loader": "^8.3.0",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths": "^3.11.0",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.4.3",
+    "webpack": "^5.52.1",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "author": "Moonshot labs",
+  "license": "MIT"
+}

@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "pathParameters": {
+    "id": "e8d74240-1bb3-11ec-8280-e7a8d29c48d6"
+  },
+  "body": "{\"name\": \"Blastec v2\"}"
+}
