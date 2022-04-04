@@ -15,7 +15,6 @@ const serverlessConfiguration: AWS = {
     custom: {
         stageType: '${opt:stage, env:AWS_STAGE, "dev"}',
         envType: '${env:ENV_TYPE, "dev"}',
-        region: '${opt:region, env:AWS_REGION, "eu-west-3"}',
         prefix: '${self:custom.stageType}-${self:service}',
         reportsTable: '${self:custom.stageType}-${self:service}-reports-table',
         hostedZoneName: '${env:HOSTED_ZONE, "${self:custom.envType}.typescript-msl.ml"}',
