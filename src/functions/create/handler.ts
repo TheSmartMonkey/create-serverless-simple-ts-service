@@ -1,29 +1,23 @@
-import { formatJSONResponse, ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway';
+import { formatJSONResponse, ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
 import { middyfy } from '@libs/lambda';
-import * as uuid from 'uuid';
+import createHttpError from 'http-errors';
 
-import { dynamoDBClient } from '@libs/db';
-import reportSchema from '../../schema/reports';
+import { createReport } from '@libs/services/reports/reports.handler';
+import ReportSchema from '../../schemas/reports';
 
-const create: ValidatedEventAPIGatewayProxyEvent<typeof reportSchema> = async (event) => {
-  const timestamp = new Date().getTime();
+const create: ValidatedEventAPIGatewayProxyEvent<typeof ReportSchema> = async (event) => {
+  const name = event.body.name;
+  if (!name) throw createHttpError(400, 'name not provided');
 
-  const params = {
-    TableName: process.env.REPORTS_TABLE,
-    Item: {
-      id: uuid.v1(),
-      createdAt: timestamp,
-      updatedAt: timestamp,
-      name: event.body.name,
+  const data = await createReport(event.body);
+
+  return formatJSONResponse(
+    {
+      message: 'report created',
+      data,
     },
-  };
-
-  await dynamoDBClient().put(params).promise();
-
-  return formatJSONResponse({
-    message: 'report created',
-    data: params.Item,
-  });
+    201,
+  );
 };
 
 export const main = middyfy(create);

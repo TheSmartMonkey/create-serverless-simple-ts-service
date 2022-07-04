@@ -52,7 +52,7 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       REPORTS_TABLE: '${self:custom.reportsTable}',
-      OFFLINE: 'false',
+      OFFLINE: 'true',
     },
     iam: {
       role: {

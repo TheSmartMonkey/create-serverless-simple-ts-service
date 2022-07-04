@@ -8,7 +8,7 @@ export default {
     },
     name: {
       type: 'string',
-      title: 'name',
+      title: 'report name',
     },
   },
   required: ['name'],

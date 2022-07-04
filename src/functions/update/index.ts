@@ -1,5 +1,5 @@
-import { handlerPath } from '@libs/handlerResolver';
-import reportSchema from '../../schema/reports';
+import { handlerPath } from '@libs/handler-resolver';
+import ReportSchema from '../../schemas/reports';
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.main`,
@@ -7,10 +7,10 @@ export default {
     {
       http: {
         method: 'put',
-        path: 'reports/{id}',
+        path: 'reports',
         request: {
           schemas: {
-            'application/json': reportSchema,
+            'application/json': ReportSchema,
           },
         },
       },

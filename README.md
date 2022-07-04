@@ -1,6 +1,6 @@
-# serverless
+# Serverless simple typescript service template
 
-Template of a simple serverless ts api service with dynamodb
+Template of a simple serverless typescript api service with dynamodb
 
 ## Installation
 
@@ -36,7 +36,6 @@ for dependencies like dynamodb, run the following command:
 - `npx sls invoke local -f get --path src/functions/get/mock.json`
 - `npx sls invoke local -f list --path src/functions/list/mock.json`
 - `npx sls invoke local -f update --path src/functions/update/mock.json`
-- `npx sls invoke local -f version --path src/functions/version/mock.json`
 
 Check the [sls invoke local command documentation](https://www.serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/) for more information.
 
