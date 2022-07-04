@@ -7,7 +7,7 @@ export default {
       http: {
         method: 'delete',
         path: 'reports/{id}',
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};

@@ -1,5 +1,5 @@
 export default {
-  type: "object",
+  type: 'object',
   title: 'Visit report',
   properties: {
     id: {
@@ -9,7 +9,7 @@ export default {
     name: {
       type: 'string',
       title: 'name',
-    }
+    },
   },
-  required: ['name']
+  required: ['name'],
 } as const;

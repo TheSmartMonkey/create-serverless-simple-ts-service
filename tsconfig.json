@@ -11,14 +11,7 @@
     "outDir": "lib"
   },
   "include": ["src/**/*.ts", "serverless.ts"],
-  "exclude": [
-    "node_modules/**/*",
-    ".serverless/**/*",
-    ".webpack/**/*",
-    "_warmup/**/*",
-    ".vscode/**/*",
-    "report-service/**/*",
-  ],
+  "exclude": ["node_modules/**/*", ".serverless/**/*", ".webpack/**/*", "_warmup/**/*", ".vscode/**/*", "report-service/**/*"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }

@@ -1,6 +1,6 @@
 # serverless
 
-Template of a simple serverless ts api service with dynamodb 
+Template of a simple serverless ts api service with dynamodb
 
 ## Installation
 

@@ -1,14 +1,12 @@
-import { dynamoDBClient } from '@libs/db';
-import { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 import { formatJSONResponse } from '@libs/apiGateway';
+import { dynamoDBClient } from '@libs/db';
 import { middyfy } from '@libs/lambda';
+import { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 
-import reportSchema from '../../schema/reports';
 import createHttpError from 'http-errors';
-
+import reportSchema from '../../schema/reports';
 
 const update: ValidatedEventAPIGatewayProxyEvent<typeof reportSchema> = async (event) => {
-
   const timestamp = new Date().getTime();
 
   const params = {
@@ -31,10 +29,9 @@ const update: ValidatedEventAPIGatewayProxyEvent<typeof reportSchema> = async (e
   try {
     const data = await dynamoDBClient().update(params).promise();
     return formatJSONResponse({
-      message: "report updated",
+      message: 'report updated',
       data: data.Attributes,
     });
-
   } catch (e) {
     if (e.code === 'ConditionalCheckFailedException') {
       throw createHttpError(400, `No report found with the id ${event.pathParameters.id}.`);
@@ -42,7 +39,6 @@ const update: ValidatedEventAPIGatewayProxyEvent<typeof reportSchema> = async (e
     console.error('Update Failed', e);
     throw e;
   }
-
-}
+};
 
 export const main = middyfy(update);

@@ -1,9 +1,8 @@
-import { dynamoDBClient } from '@libs/db';
 import { formatJSONResponse, ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway';
+import { dynamoDBClient } from '@libs/db';
 import { middyfy } from '@libs/lambda';
 
 const list: ValidatedEventAPIGatewayProxyEvent<void> = async () => {
-
   const params = {
     TableName: process.env.REPORTS_TABLE,
   };
@@ -13,6 +12,6 @@ const list: ValidatedEventAPIGatewayProxyEvent<void> = async () => {
   return formatJSONResponse({
     data: data.Items,
   });
-}
+};
 
 export const main = middyfy(list);

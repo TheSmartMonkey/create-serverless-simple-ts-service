@@ -7,7 +7,7 @@ export default {
       http: {
         method: 'get',
         path: 'reports/{id}',
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};

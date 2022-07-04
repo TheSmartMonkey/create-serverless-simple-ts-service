@@ -11,9 +11,9 @@ export default {
         request: {
           schemas: {
             'application/json': reportSchema,
-          }
+          },
         },
-      }
-    }
-  ]
-}
+      },
+    },
+  ],
+};
