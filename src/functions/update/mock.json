@@ -1,6 +1,0 @@
-{
-  "headers": {
-    "Content-Type": "application/json"
-  },
-  "body": "{\"id\": \"dcc6ed80-04f0-11ed-8b9b-13a92a857b04\", \"name\": \"Blastec v2\"}"
-}

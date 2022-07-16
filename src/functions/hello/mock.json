@@ -1,0 +1,9 @@
+{
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "pathParameters": {
+    "message": "my message"
+  },
+  "body": "{}"
+}

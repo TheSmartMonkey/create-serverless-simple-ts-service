@@ -1,12 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 
-import create from '@functions/create';
-import del from '@functions/del';
-import get from '@functions/get';
-import list from '@functions/list';
-import update from '@functions/update';
-
-import dynamodbTables from 'resources/dynamodb-tables';
+import hello from '@functions/hello';
 
 const serverlessConfiguration: AWS = {
   service: 'serverless-ts-service',
@@ -30,14 +24,8 @@ const serverlessConfiguration: AWS = {
       concurrency: 10,
       loader: { '.html': 'text' },
     },
-    dynamodb: {
-      stages: '${self:custom.stageType}',
-      start: {
-        migrate: true,
-      },
-    },
   },
-  plugins: ['serverless-esbuild', 'serverless-deployment-bucket', 'serverless-dynamodb-local', 'serverless-offline'],
+  plugins: ['serverless-esbuild', 'serverless-deployment-bucket', 'serverless-offline'],
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
@@ -51,7 +39,6 @@ const serverlessConfiguration: AWS = {
       shouldStartNameWithService: true,
     },
     environment: {
-      REPORTS_TABLE: '${self:custom.reportsTable}',
       OFFLINE: 'true',
     },
     iam: {
@@ -75,18 +62,13 @@ const serverlessConfiguration: AWS = {
     },
   },
   functions: {
-    create,
-    list,
-    get,
-    update,
-    del,
+    hello,
   },
   package: {
     // When true optimise lambda performance but increase deployment time
     individually: !!process.env.STAGE_TYPE && process.env.STAGE_TYPE !== 'dev',
   },
   resources: {
-    Resources: Object.assign(dynamodbTables),
     Outputs: {
       ApiURL: {
         Value: 'https://${self:custom.apiDomainName}/${self:custom.apiBasePath}',
