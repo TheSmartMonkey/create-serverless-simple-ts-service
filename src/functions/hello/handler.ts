@@ -12,4 +12,4 @@ const hello: ValidatedEventAPIGatewayProxyEvent<void> = async (event) => {
   });
 };
 
-export const main = middyfy(hello);
+export const main = middyfy({ handler: hello });
