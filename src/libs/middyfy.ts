@@ -5,7 +5,7 @@ import inputOutputLogger from '@middy/input-output-logger';
 import JSONErrorHandlerMiddleware from 'middy-middleware-json-error-handler';
 import { logger } from './logger';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
 export function middyfy(handler) {
   return middy(handler)
     .use(errorLogger({ logger: (...args) => logger.error(...args) }))

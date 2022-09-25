@@ -6,8 +6,8 @@ export default {
   events: [
     {
       http: {
-        method: 'post',
-        path: 'reports',
+        method: 'get',
+        path: 'message/{message}/hello',
       },
     },
   ],

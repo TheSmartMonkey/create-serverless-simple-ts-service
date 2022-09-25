@@ -6,5 +6,5 @@ export const logger = pino({
 
 // Redefined console.log for external libs that have
 // the bad idea to use it
-// eslint-disable-next-line no-console
+// eslint-disable-next-line no-console, @typescript-eslint/explicit-function-return-type
 console.log = (...args) => logger.debug({ src: 'console.log', args });

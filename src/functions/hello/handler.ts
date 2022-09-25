@@ -1,5 +1,5 @@
 import { formatJSONResponse, ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import { middyfy } from '@libs/lambda';
+import { middyfy } from '@libs/middyfy';
 import createHttpError from 'http-errors';
 
 const hello: ValidatedEventAPIGatewayProxyEvent<void> = async (event) => {
@@ -12,4 +12,4 @@ const hello: ValidatedEventAPIGatewayProxyEvent<void> = async (event) => {
   });
 };
 
-export const main = middyfy(hello);
+export const main = middyfy({ handler: hello });
